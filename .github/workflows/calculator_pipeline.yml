@@ -1,6 +1,4 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI
+name: Build and Push Docker Image
 
 # Controls when the workflow will run
 on:
@@ -16,21 +14,26 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  build_and_push:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+       # Step 1: Check out the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      # Step 2: Log in to the Azure Container Registry
+      - name: Login to Azure Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: judevops.azurecr.io
+          username: ${{ secrets.AZURECR_USERNAME }}
+          password: ${{ secrets.AZURECR_PASSWORD }}
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      # Step 3: Build and push the Docker image
+      - name: Build and push Docker image
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          docker build -t judevops.azurecr.io/amela_music-calculator .
+          docker push judevops.azurecr.io/amela_music-calculator
