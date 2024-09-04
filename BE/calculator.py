@@ -45,7 +45,7 @@ if not args.rest and len(sys.argv) != 4:
 
 if (args.add):
     result = CalculatorHelper().add(args.add[0], args.add[1])
-    print(f'The result of {args.add[0]}+{args.add[1]} is {result}')
+    print(f'The result of {args.add[0]}+{args.add[1]} is {result}!')
 elif (args.subtract):
     result = CalculatorHelper().subtract(args.subtract[0], args.subtract[1])
     print(f'The result of {args.subtract[0]}-{args.subtract[1]} is {result}')
