@@ -58,6 +58,7 @@ jobs:
         if: success() || failure() # always run even if the previous step fails
         with:
           report_paths: '**/report.xml'
+          token: ${{ github.token }}
       #/////////////////////////////////
 
       # Step 3: Log in to the Azure Container Registry
