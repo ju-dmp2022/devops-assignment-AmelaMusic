@@ -33,7 +33,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip3 install -r requirements.txt
+          pip3 install -r BE/requirements.txt
           pip3 install openapi-python-client
       
       # Start REST API
