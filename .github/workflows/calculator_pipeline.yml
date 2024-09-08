@@ -49,6 +49,7 @@ jobs:
       - name: Run tests
         id: run-tests
         run: |
+          export PYTHONPATH=$PYTHONPATH:$GITHUB_WORKSPACE/BE
           pytest --junit-xml=report.xml
       
       # Publishes a test report in JUnit format
