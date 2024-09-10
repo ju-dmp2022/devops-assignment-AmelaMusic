@@ -59,6 +59,7 @@ jobs:
         with:
           report_paths: '**/report.xml'
           token: ${{ github.token }}
+          include_passed: true  # Include passed tests in the report
       #/////////////////////////////////
 
       # Step 3: Log in to the Azure Container Registry
