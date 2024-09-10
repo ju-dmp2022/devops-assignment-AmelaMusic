@@ -25,9 +25,6 @@ class TestCalculator(BaseTest):
         (0, 0, 0),
     ])
     def test_add(self, a, b, expected):
-        # Arrange
-        calculator = CalculatorHelper()
-
         # Act
         result = self.calculator.add(a, b)
 
@@ -41,32 +38,27 @@ class TestCalculator(BaseTest):
         (0, 0, 0),
     ])
     def test_subtract(self, a, b, expected):
-
-        calculator = CalculatorHelper()
-
+        # Act
         result = self.calculator.subtract(a, b)
 
+        # Assert
         assert result == expected
 
     def test_multiply(self):
+        # Act
+        result = self.calculator.multiply(3, 2)
 
-        calculator = CalculatorHelper()
-
-        result = calculator.multiply(3, 2)
-
+        # Assert
         assert result == 6
 
     def test_divide(self):
+        # Act
+        result = self.calculator.divide(10, 2)
 
-        calculator = CalculatorHelper()
-
-        result = calculator.divide(10, 2)
-
+        # Assert
         assert result == 5
 
     def test_divide_by_zero(self):
 
-        calculator = CalculatorHelper()
-
         with pytest.raises(ZeroDivisionError):
-            calculator.divide(10, 0)
+            self.calculator.divide(10, 0)
