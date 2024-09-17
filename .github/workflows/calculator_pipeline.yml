@@ -45,7 +45,7 @@ jobs:
 
       # Start Calculator Front-end and Back-end using Docker Compose
       - name: Start Docker Compose services (Frontend & Backend)
-        run: docker-compose -p webcalculator up -d
+        run: docker compose -p webcalculator up -d
         working-directory: .
       
       # Start REST API
